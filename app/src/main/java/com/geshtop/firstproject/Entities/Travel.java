@@ -1,7 +1,9 @@
 package com.geshtop.firstproject.Entities;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class Travel {
     private String travelId ;
@@ -9,13 +11,32 @@ public class Travel {
     private String ClientPhone;
     private String clientEmail;
 
+    public List<UserLocation> getDestinations() {
+        return Destinations;
+    }
+
+    public void setDestinations(List<UserLocation> destinations) {
+        Destinations = destinations;
+    }
+
     private UserLocation travelLocation;
-
     private RequestType requesType;
-
     private Date travelDate;
-
     private Date arrivalDate;
+    private int passengers;
+    private HashMap<String, Boolean> company;
+    private List<UserLocation> Destinations;
+    private Date creationDate;
+
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(int passengers) {
+        this.passengers = passengers;
+    }
+
 
     public Date getCreationDate() {
         return creationDate;
@@ -25,10 +46,10 @@ public class Travel {
         this.creationDate = creationDate;
     }
 
-    private Date creationDate;
 
 
-    private HashMap<String, Boolean> company;
+
+
 
     public String getTravelId() {
         return travelId;
@@ -104,6 +125,15 @@ public class Travel {
 
     public Travel() {
         creationDate = new Date();
+        requesType = RequestType.Created;
+        Destinations = new ArrayList<>();
+
+    }
+
+
+    public void addDestionationLocation (UserLocation location){
+        if(location != null)
+            Destinations.add(location);
     }
 
     public boolean isValid() {
